@@ -238,9 +238,10 @@ must stay key-complete.
 
 ## Packages
 
-- `SwiftlyS2.CS2` is pinned in `WeaponSkins.csproj` (the comment there says why) and floats
-  in `WeaponSkins.Shared.csproj`. Both use `ExcludeAssets="runtime"`: the host provides it,
-  and so does `Microsoft.Extensions.*` where it is marked the same way.
+- `SwiftlyS2.CS2` is pinned to `1.5.0` in `WeaponSkins.csproj` and floats in
+  `WeaponSkins.Shared.csproj`. Both use `ExcludeAssets="runtime"`: the host provides it.
+  `Microsoft.Extensions.*` is never referenced directly — `SwiftlyS2.CS2` brings it in, and
+  a pinned version fails restore with `NU1605` whenever SwiftlyS2 raises its own.
 - What SwiftlyS2 does not provide — FreeSql, FluentMigrator, the database drivers, Tomlyn,
   ValveKeyValue — ships in the zip next to `WeaponSkins.dll`.
 
